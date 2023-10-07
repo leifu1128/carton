@@ -8,9 +8,11 @@ wit_bindgen::generate!({
     }
 });
 
-static mut INFER_FN: Option<fn(Vec<(String, Tensor)>) -> Vec<(String, Tensor)>> = None;
+type InferFn = fn(Vec<(String, Tensor)>) -> Vec<(String, Tensor)>;
 
-pub fn set_infer_fn(f: fn(Vec<(String, Tensor)>) -> Vec<(String, Tensor)>) {
+static mut INFER_FN: Option<InferFn> = None;
+
+pub fn set_infer_fn(f: InferFn) {
     unsafe {
         INFER_FN = Some(f);
     }
