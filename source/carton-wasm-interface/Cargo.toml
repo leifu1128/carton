@@ -1,0 +1,14 @@
+[package]
+name = "carton-wasm-interface"
+version = "0.0.1"
+edition = "2021"
+
+[dependencies]
+macros = { path = "macros" }
+wit-bindgen = "0.12.0"
+
+[lib]
+crate-type = ["cdylib"]
+
+[workspace]
+members = ["macros"]
